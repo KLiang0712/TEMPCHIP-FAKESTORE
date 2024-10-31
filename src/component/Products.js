@@ -1,20 +1,18 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { BsPlus, BsEyeFill } from 'react-icons/bs';
 
-import { CartContext } from "../docs/CartDoc"; 
+import { CartContext } from "../docs/CartDoc";
 
 const Product = ({product}) => {
     console.log(product);
-
+    const {addItem} = useContext(CartContext); 
     const products = useSelector(state => state.allProducts.products); 
+    
+    /* destructure product items using a renderList */ 
+    const {id, image, category, title, price} = product;
     const renderList = products.map((product) => {
-
-    // destructure product items 
-    const {id, title, image, price, category } = product;     
-        
     return (
         <div>
             <div className="border border-[#16bbce] h-[300px] mb-4 relative overflow-hidden group transition">
@@ -26,7 +24,7 @@ const Product = ({product}) => {
                             group-hover:scale-110 transition duration-300"
                             src={image}
                             alt=''
-                        />
+                            />
                         </div>
                 </div>
                 {/* category & title & price */}    
@@ -56,14 +54,25 @@ const Product = ({product}) => {
                     </button>
                     <Link 
                         to={`/product/${id}`}
-                    className="w-12 h-12 bg-white flex justify-center"><BsEyeFill /></Link>
+                    className="w-12 h-12 bg-black flex justify-center"><BsEyeFill /></Link>
 
                 </div>
             </div>
-            <div>2</div>
+            
+            {/* category, title & price */}
+            <div>
+                <div className="tex-sm capitalize text-gray-500 mb-1">{category}</div>
+                <Link to={`/product/${id}`}>
+                    <h2 className="font-semibold mb-1">{title}</h2>
+                </Link>
+
+                <h2 className="font-semibbold">$ {price}</h2>
+            </div>
+
         </div>
         )
     });
+
     return <>{renderList}</>
 };
 

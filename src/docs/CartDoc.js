@@ -5,8 +5,10 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   // cart state
   const [cart, setCart] = useState([]);
+  
   // item amount state
   const [itemAmount, setItemAmount] = useState(0);
+  
   // total price state
   const [total, setTotal] = useState(0);
 
@@ -16,6 +18,7 @@ const CartProvider = ({ children }) => {
     }, 0);
     setTotal(total);
   });
+  // console.log(cart); 
 
   // update item amount
   useEffect(() => {
@@ -34,15 +37,15 @@ const CartProvider = ({ children }) => {
     const newItem = { ...product, amount: 1 };
 
     /* check if the item is already in the cart */
-    const item = cart.find((item) => {
+    const cartItem = cart.find((item) => {
       return item.id === id;
     });
     
     /* if cart item is already in cart */
-    if (item) {
+    if (cartItem) {
       const newCart = [...cart].map((item) => {
         if (item.id === id) {
-          return { ...item, amount: item.amount + 1 };
+          return { ...item, amount: cartItem.amount + 1 };
         } 
         else 
         { 
@@ -56,7 +59,6 @@ const CartProvider = ({ children }) => {
       setCart([...cart, newItem]);
     }
   };
-  console.log(cart); 
 
   /* remove from cart */ 
   const removeItem = (id) => {
@@ -80,7 +82,7 @@ const CartProvider = ({ children }) => {
   /* decrease amount */
   const decreaseAmount = (id) => {
     const cartItem = cart.find((item) => item.id === id);
-    if (item) {
+    if (cartItem) {
       const newCart = cart.map((item) => {
         if (item.id === id) {
           return { ...item, amount: cartItem.amount - 1 };
@@ -98,16 +100,14 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{
-        cart,
+      value={[cart,
         addItem,
         removeItem,
         clearCart,
         increaseAmount,
         decreaseAmount,
         itemAmount,
-        total,
-      }}
+        total,]}
     >
       {children}
     </CartContext.Provider>

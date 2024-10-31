@@ -1,18 +1,13 @@
-import { useContext } from "react"; 
-import React from "react";
+import React, { useContext } from "react"; 
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";  
-import { useEffect } from "react";
-import axios from 'axios';
-
+import { CartContext } from "../docs/CartDoc";
 import { ItemContext } from "../docs/ItemDoc";
 
-const ItemInfo = () => 
-{
+const ItemInfo = () => {
     // Product ID fetch from URL 
     const { id } = useParams(); 
-    const { addItem } = useContext(CartDoc);
-    const { products } = useContext(ItemDoc);
+    const { addItem } = useContext(CartContext);
+    const { products } = useContext(ItemContext);
   
     // retrieve a single product through ID 
     const product = products.find((item) => {
@@ -31,7 +26,8 @@ const ItemInfo = () =>
 
     // destructure product 
     const {title, image, description, price} = product;     
-    return <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center">
+    return (
+    <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center">
         <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row items-center">
                 {/* image */}
@@ -55,6 +51,7 @@ const ItemInfo = () =>
             </div>
         </div>
     </section>
+    );
 };  
 
 export default ItemInfo; 

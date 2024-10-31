@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { IoMdArrowForward } from 'react-icons/io';
 import { IoIosTrash } from 'react-icons/io';
 
-import CartItem from "../docs/ItemDoc";
+import ItemList from "../component/ItemList";
 import { NavContext } from "../docs/NavDoc";
 import { CartContext } from "../docs/CartDoc";
 
@@ -33,18 +33,13 @@ const Navpane = () => {
         </div>
       </div>
 
-      <div className="bg-blue-300 flex flex-col gap-y-2 h-[520px]
+      <div className="flex flex-col gap-y-2 h-[520px]
       lg:h-[640px] overflow-y-auto overflow-x-hidden border-b">
-        {cart.map((item) => {
-          return <CartItem item={item} key={item.id}/>;
+        {cart?.map((item) => {
+          return <ItemList item={item} key={item.id}/>;
         })}
       </div>
 
-      <div className="flex flex-col gap-y-2 h-[360px] md:h-[480px] lg:h-[420px] overflow-y-auto overflow-x-hidden border-b">
-        {cart.map((item) => {
-          return <CartItem item={item} key={item.id} />;
-        })}
-      </div>
       <div className="flex flex-col gap-y-3 py-4 mt-4">
         <div className="flex w-full justify-between items-center">
           {/* total */}
