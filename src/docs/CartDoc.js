@@ -18,9 +18,9 @@ const CartProvider = ({ children }) => {
     }, 0);
     setTotal(total);
   });
-  // console.log(cart); 
+  console.log(cart); 
 
-  // update item amount
+  /*update item amount */ 
   useEffect(() => {
     if (cart) {
       const amount = cart.reduce((accumulator, currentItem) => {
@@ -32,8 +32,8 @@ const CartProvider = ({ children }) => {
 
   /* add to cart */
   const addItem = (product, id) => {
-    // console.log(product); 
-    // console.log(`item ${product.title} added to cart`); 
+    //console.log(product); 
+    //console.log(`item ${product.title} added to cart`); 
     const newItem = { ...product, amount: 1 };
 
     /* check if the item is already in the cart */
@@ -62,7 +62,7 @@ const CartProvider = ({ children }) => {
 
   /* remove from cart */ 
   const removeItem = (id) => {
-    const newCart = cart.filter((item) => {
+    const newCart = cart?.filter((item) => {
       return item.id !== id;
     });
     setCart(newCart);
@@ -80,10 +80,13 @@ const CartProvider = ({ children }) => {
   };
 
   /* decrease amount */
-  const decreaseAmount = (id) => {
-    const cartItem = cart.find((item) => item.id === id);
-    if (cartItem) {
-      const newCart = cart.map((item) => {
+  const decreaseAmount = (id) => 
+  {
+    const cartItem = cart.find(item => {
+      return item.id === id;  
+  });
+  if (cartItem) {
+      const newCart = cart?.map((item) => {
         if (item.id === id) {
           return { ...item, amount: cartItem.amount - 1 };
         } else {
@@ -100,14 +103,14 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={[cart,
+      value={{cart,
         addItem,
         removeItem,
         clearCart,
         increaseAmount,
         decreaseAmount,
         itemAmount,
-        total,]}
+        total,}}
     >
       {children}
     </CartContext.Provider>

@@ -1,18 +1,22 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { BsPlus, BsEyeFill } from 'react-icons/bs';
-
 import { CartContext } from "../docs/CartDoc";
 
 const Product = ({product}) => {
     console.log(product);
     const {addItem} = useContext(CartContext); 
-    const products = useSelector(state => state.allProducts.products); 
+    // const products = useSelector(state => state.allProducts.products); 
     
     /* destructure product items using a renderList */ 
     const {id, image, category, title, price} = product;
-    const renderList = products.map((product) => {
+    
+    // const renderList = products.map((product) => {
+   
+    // Check if images array is empty
+    const imageUrl = image && image.length > 0 ? image[0] : '';
+    
     return (
         <div>
             <div className="border border-[#16bbce] h-[300px] mb-4 relative overflow-hidden group transition">
@@ -22,7 +26,7 @@ const Product = ({product}) => {
                         justify-center item-center">
                             <img className="max-w-[160px] 
                             group-hover:scale-110 transition duration-300"
-                            src={image}
+                            src={imageUrl}
                             alt=''
                             />
                         </div>
@@ -68,12 +72,10 @@ const Product = ({product}) => {
 
                 <h2 className="font-semibbold">$ {price}</h2>
             </div>
-
         </div>
-        )
-    });
+    );
 
-    return <>{renderList}</>
-};
+    // return <>{renderList}</>
+}
 
 export default Product; 

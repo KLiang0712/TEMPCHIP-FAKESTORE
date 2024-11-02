@@ -1,24 +1,24 @@
 import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
-
 export const ItemContext = createContext();
 
-const ItemProvider = ({ children }) => {
+const ItemProvider = ({ children}) => {
   /* products state */
   const [products, setProducts] = useState([]);
-  
-  /* fetch products */ 
+  const [selectedCategory, setSelectedCategory] = useState(''); 
+
+  /* fetch products */
   useEffect(() => {
     const fetchProducts = async () => {
-      const data = await axios.get("https://fakestoreapi.com/products");
-      setProducts(data);
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProducts(data); 
     };
     fetchProducts();
   }, []);
-
+   
   return (
-    <ItemContext.Provider value={[products]}>{children}</ItemContext.Provider>
+    <ItemContext.Provider value={{products, selectedCategory, setSelectedCategory}}>{children}</ItemContext.Provider>
   );
 };
 
-export default ItemProvider;
+export default ItemProvider;  

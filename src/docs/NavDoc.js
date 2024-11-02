@@ -9,7 +9,7 @@ const NavProvider = ({children}) => {
   const handleClose = () => {setIsOpen(false)};
 
   return ( 
-    <NavContext.Provider value={[isOpen, setIsOpen, handleClose]}>{children}</NavContext.Provider>
+    <NavContext.Provider value={{isOpen, setIsOpen, handleClose}}>{children}</NavContext.Provider>
   );
 };
 

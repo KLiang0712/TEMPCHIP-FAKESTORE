@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 
 import { IoMdArrowForward } from 'react-icons/io';
 import { IoIosTrash } from 'react-icons/io';
@@ -12,6 +12,13 @@ import { CartContext } from "../docs/CartDoc";
 const Navpane = () => {
   const { isOpen, handleClose } = useContext(NavContext);
   const { cart, clearCart, total, itemAmount } = (useContext(CartContext));
+  
+  /* navigate checkout function */
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    navigate('/checkout');
+  };
 
   return (
     <div
@@ -68,6 +75,10 @@ const Navpane = () => {
         >
           Checkout
         </Link>
+
+        <button onClick={handleCheckout} className='bg-primary flex p-4 justify-center items-center text-white w-full font-medium'>
+          Checkout
+        </button>
       </div>
     </div>
   );

@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
- 
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
-
 import { CartContext } from '../docs/CartDoc';
 
 const ItemList = ({product}) => {
   const {removeItem, increaseAmount, decreaseAmount } = useContext(CartContext);
   /* destructure items */
   const {id, title, image, price, amount} = product;
+  
+  const discountedPrice = (price - (price * 0 / 100)).toFixed(2);
+  const imageURL = image && image.length > 0 ? image[0] : '';
+
   return (
     <div className='flex gap-x-4 py-2 lg:px-6 border-b
     border-gray-200 w-full font-light text-gray-500'>
@@ -16,7 +18,7 @@ const ItemList = ({product}) => {
         gap-x-4'>
         {/* image */}
         <Link to={`/product/${id}`}>
-          <img className='max-w-[80px]' src={image} alt='' />
+          <img className='max-w-[80px]' src={imageURL} alt='' />
         </Link>
           
         <div className='w-full flex flex-col'>
@@ -67,6 +69,21 @@ const ItemList = ({product}) => {
 
                 {/* item price */}
                 <div className='flex-1 flex items-center justify-around'>$ {price}</div>
+
+                <div className='font-semibold'>
+                  {/* discounted price */}
+                  {discountedPrice < price && (
+                    <div className="flex items-center">
+                      <span className="line-through mr-1 text-gray-500">$ {price.toFixed(2)}</span>
+                      {/**  <span className="text-green-500">İndirim </span> */}
+                      <span>$ {discountedPrice}</span>
+                    </div>
+                  )}
+                  
+                  {discountedPrice >= price && (
+                    <span> $ { price.toFixed(2)}</span>
+                  )}
+                </div>
 
                 {/* final price */}
                 <div className='flex-1 flex justify-end
