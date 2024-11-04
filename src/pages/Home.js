@@ -1,26 +1,34 @@
-import React, {useState, useEffect, useContext} from "react";
-import { ItemContext } from "../docs/ItemDoc";
+import React, {useState, useEffect} from "react";
+// import { ItemContext } from "../docs/ItemDoc";
 
 /* components */
 import Product from "../component/Products";
 import Catalog from "../component/Catalog";
+// import ItemInfo from "./ItemInfo";
 
 const Home = () => {
-  const {products, selectedCategory, setSelectedCategory} = useContext(ItemContext); 
-  // console.log(products);
-  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  
+ 
+  // const {products, selectedCategory, setSelectedCategory} = useContext(ItemContext); 
+  // const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+  fetch('https://fakestoreapi.com/products')
+    .then((response) => response.json())
+    .then((data) => {
+      setProducts(data);
+      setFilteredItems(data);
+      });
+  }, []); 
+
+   /*  
     fetchCategories();  
   }, []); 
 
   const fetchCategories = async () => {
-    fetch("https://fakestoreapi.com/products")
-    .then((data) => {
-    // console.log(data);
-    return data.json();
-  })
-    /*
     try {
       const response = await fetch('https://fakestoreapi.com/products/categories');
       const data = await response.json();
@@ -29,30 +37,34 @@ const Home = () => {
     } catch (error) {
       console.error('Error 404:', error);
     }
-    */
   };
+  */
+  
+  /* products filter */ 
+  const handleCategoryChange = (category) => {
+    // setSelectedCategory(event.target.value);
+    setSelectedCategory(category);
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
+    if (selectedCategory === 'All') {
+      setFilteredItems(products); 
+    } else {
+      const filteredItems = products.filter((product) =>
+        product.category.toLowerCase().includes(category.toLowerCase())
+      ); 
+      setFilteredItems(filteredItems);
+    }
   };
-
-  /* filtered products */ 
-  const filteredItems = products.filter((item) => {
-    /*
-    return (
-      item.category === "men's clothing" || 
-      item.category === "women's clothing" || 
-      item.category === "jewelery" ||
-      item.category === "electronics"
-    );
-    */
+  
+  /*
+  const filteredItems = products.filter(item => {
 
     if (selectedCategory === 'All') {
       return true;
-    }
+      }
 
     return item.category === selectedCategory;
   });
+  */ 
 
   return ( 
   <div>
@@ -63,7 +75,12 @@ const Home = () => {
                 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] max-w-sm
                 mx-auto md:max-w-none md:mx-0">
                   {filteredItems.map((product) => {
-                    return <Product product={product} key={product.id}/>
+                    return (
+                      <Product product={product} key={product.id} 
+                        selectedCategory={selectedCategory}
+                        onCategoryChange={handleCategoryChange}
+                      />
+                    );
                   })}
             </div>
         </div>

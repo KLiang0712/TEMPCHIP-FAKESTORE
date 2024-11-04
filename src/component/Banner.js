@@ -16,7 +16,7 @@ const Banner = () =>
 {
   /* header state */
   const [isActive, setIsActive] = useState(false); 
-    const {isOpen, setIsOpen} = useContext(NavContext);
+  const {isOpen, setIsOpen} = useContext(NavContext);
   const { itemAmount } = useContext(CartContext); 
 
   /* Products & Categories */
@@ -37,10 +37,11 @@ const Banner = () =>
     
   const fetchCategories = async () => {
     try {
-      const response = await fetch('https://fakestoreapi.com/products/categories');
+      const response = await fetch('https://fakestoreapi.com/products');
       const data = await response.json();
       const uniqueCategories = [...new Set(data.map(item => item.category))];
       setCategories(['All', ...uniqueCategories]);
+      // setCategories(['All', 'electronics', 'jewelery', "men's clothing", "women's clothing", ...uniqueCategories]);
     } catch (error) {
       console.error('Failed to fetch categories:', error);
     }
@@ -53,7 +54,7 @@ const Banner = () =>
 
     /* Fetch products based on selected category */
     try {
-      let apiUrl = 'https://fakestoreapi.com/products/categories';
+      let apiUrl = 'https://fakestoreapi.com/products';
       if (selectedCategory !== 'All') {
         apiUrl += `?category=${selectedCategory}`;
       }
@@ -68,7 +69,7 @@ const Banner = () =>
   };
 
   return (
-    <header className={`${isActive ? 'bg-white py-4 shadow-md' : 'bg-none py-6'
+    <header className={`${isActive ? 'bg-cyan-500 py-4 shadow-md' : 'bg-none py-6'
     } fixed w-full z-10 transition-all`}>  
       
       <div className="container mx-auto flex items-center 
@@ -82,7 +83,7 @@ const Banner = () =>
         {/* Category Filter */}
         <select
           id='category'
-          className='border border-black px-2 py-1 rounded'
+          className='border bg-black border-black px-2 py-1 rounded'
           onChange={handleCategoryChange}
         >
           {categories.map((category, index) => (
@@ -100,7 +101,7 @@ const Banner = () =>
               <BsBag className='text-2xl' /> 
               
             <div className="bg-green-600 absolute -right-2
-              -bottom-2 text-[12px] w-[18px] h-[18px] text-white
+              -bottom-2 text-[12px] w-[18px] h-[18px] text-black
               rounded-full flex justify-center items-center">
                 {itemAmount}
             </div>

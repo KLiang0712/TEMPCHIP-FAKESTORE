@@ -13,12 +13,11 @@ import Banner from "./component/Banner";
 import Footer from "./component/Footer";
 
 const App = () => {
-  return (
-  <div className='overflow-hidden'>
+  return (<div className='overflow-hidden'>
     <Router>
       <Banner />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="EMART" element={<Home />} />
             <Route path="/product/:id" element={<ItemInfo />} />
             <Route path='/checkout' element={<Checkout />} />
             <Route path='/payment' element={<Payment />} />
