@@ -15,14 +15,21 @@ const Home = () => {
   }, []); 
 
   const fetchCategories = async () => {
+    fetch("https://fakestoreapi.com/products")
+    .then((data) => {
+    // console.log(data);
+    return data.json();
+  })
+    /*
     try {
-      const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('https://fakestoreapi.com/products/categories');
       const data = await response.json();
-      const uniqueCategories = [...new Set(data.map(item => item.category.name))];
+      const uniqueCategories = [...new Set(data.map(item => item.category))];
       setCategories(['', ...uniqueCategories]);
     } catch (error) {
       console.error('Error 404:', error);
     }
+    */
   };
 
   const handleCategoryChange = (event) => {
@@ -39,10 +46,12 @@ const Home = () => {
       item.category === "electronics"
     );
     */
+
     if (selectedCategory === 'All') {
-      return true; // Tüm ürünleri göster
+      return true;
     }
-    return item.category.name === selectedCategory;
+
+    return item.category === selectedCategory;
   });
 
   return ( 

@@ -34,26 +34,26 @@ const Banner = () =>
   useEffect(() => {
     fetchCategories();
   }, []);
-
-  /* Source: src/components/Header.js */
+    
   const fetchCategories = async () => {
     try {
-      const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('https://fakestoreapi.com/products/categories');
       const data = await response.json();
-      const uniqueCategories = [...new Set(data.map(item => item.category.name))];
+      const uniqueCategories = [...new Set(data.map(item => item.category))];
       setCategories(['All', ...uniqueCategories]);
     } catch (error) {
       console.error('Failed to fetch categories:', error);
     }
   };
-
+  
   const handleCategoryChange = async (event) => {
     const selectedCategory = event.target.value;
     setSelectedCategory(selectedCategory);
-    
-    // Fetch products based on selected category
+  
+
+    /* Fetch products based on selected category */
     try {
-      let apiUrl = 'https://fakestoreapi.com/products';
+      let apiUrl = 'https://fakestoreapi.com/products/categories';
       if (selectedCategory !== 'All') {
         apiUrl += `?category=${selectedCategory}`;
       }

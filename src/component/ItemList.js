@@ -5,10 +5,11 @@ import { CartContext } from '../docs/CartDoc';
 
 const ItemList = ({product}) => {
   const {removeItem, increaseAmount, decreaseAmount } = useContext(CartContext);
+
   /* destructure items */
   const {id, title, image, price, amount} = product;
   
-  const discountedPrice = (price - (price * 0 / 100)).toFixed(2);
+  // const discountedPrice = (price - (price * 0 / 100)).toFixed(2);
   const imageURL = image && image.length > 0 ? image[0] : '';
 
   return (
@@ -69,21 +70,6 @@ const ItemList = ({product}) => {
 
                 {/* item price */}
                 <div className='flex-1 flex items-center justify-around'>$ {price}</div>
-
-                <div className='font-semibold'>
-                  {/* discounted price */}
-                  {discountedPrice < price && (
-                    <div className="flex items-center">
-                      <span className="line-through mr-1 text-gray-500">$ {price.toFixed(2)}</span>
-                      {/**  <span className="text-green-500">İndirim </span> */}
-                      <span>$ {discountedPrice}</span>
-                    </div>
-                  )}
-                  
-                  {discountedPrice >= price && (
-                    <span> $ { price.toFixed(2)}</span>
-                  )}
-                </div>
 
                 {/* final price */}
                 <div className='flex-1 flex justify-end

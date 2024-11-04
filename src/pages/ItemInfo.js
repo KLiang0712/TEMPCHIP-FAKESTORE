@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useContext } from "react"; 
 import { useParams } from "react-router-dom";
 import { CartContext } from "../docs/CartDoc";
-// import { ItemContext } from "../docs/ItemDoc";
+import { ItemContext } from "../docs/ItemDoc";
 
 const ItemInfo = () => {
     // Product ID fetch from URL 
     const { id } = useParams(); 
     const [product, setProduct] = useState(null);
     const { addItem } = useContext(CartContext);
-    // const { products } = useContext(ItemContext);
+    const { products } = useContext(ItemContext);
   
     // fetch/retrieve */
     useEffect(() => {
