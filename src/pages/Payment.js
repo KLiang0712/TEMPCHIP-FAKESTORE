@@ -17,19 +17,19 @@ const Payment = () => {
     setAddress(event.target.value);
   };
 
-  const handlePaymentMethodChange = (event) => {
+  const handlePayMethodChange = (event) => {
     setPayMethod(event.target.value);
   };
 
-  const handlePaymentDetailsChange = (event) => {
+  const handlePayInfoChange = (event) => {
     SetPayInfo(event.target.value);
   };
 
-  const handleCardNumberChange = (event) => {
+  const handleCardNumChange = (event) => {
     setCardNum(event.target.value);
   };
 
-  const handleExpiryDateChange = (event) => {
+  const handleEXPDateChange = (event) => {
     setExpDate(event.target.value);
   };
 
@@ -79,7 +79,7 @@ const Payment = () => {
           className="w-full rounded-lg p-2 mb-4"
           placeholder="Card Number"
           value={cardNum}
-          onChange={handleCardNumberChange}
+          onChange={handleCardNumChange}
         />
         <div className="flex gap-4 mb-4">
           <input
@@ -87,7 +87,7 @@ const Payment = () => {
             className="w-1/2 rounded-lg p-2"
             placeholder="Expiry Date"
             value={expDate}
-            onChange={handleExpiryDateChange}
+            onChange={handleEXPDateChange}
           />
           <input
             type="text"
@@ -122,7 +122,7 @@ const Payment = () => {
                 type="radio"
                 value="creditCard"
                 checked={payMethod === 'creditCard'}
-                onChange={handlePaymentMethodChange}
+                onChange={handlePayMethodChange}
                 className="form-radio h-4 w-4 text-primary"
               />
               <span className="ml-2">Credit Card</span>
@@ -135,7 +135,7 @@ const Payment = () => {
                 type="radio"
                 value="crypto"
                 checked={payMethod === 'crypto'}
-                onChange={handlePaymentMethodChange}
+                onChange={handlePayMethodChange}
                 className="form-radio h-4 w-4 text-primary"
               />
               <span className="ml-2">Crypto Payment</span>
@@ -147,7 +147,7 @@ const Payment = () => {
                 type="radio"
                 value="cashOnDelivery"
                 checked={payMethod === 'cashOnDelivery'}
-                onChange={handlePaymentMethodChange}
+                onChange={handlePayMethodChange}
                 className="form-radio h-4 w-4 text-primary"
               />
               <span className="ml-2">Cash on Delivery</span>
@@ -159,7 +159,7 @@ const Payment = () => {
                 type="radio"
                 value="bankTransfer"
                 checked={payMethod === 'bankTransfer'}
-                onChange={handlePaymentMethodChange}
+                onChange={handlePayMethodChange}
                 className="form-radio h-4 w-4 text-primary"
               />
               <span className="ml-2">Bank Transfer</span>
@@ -171,7 +171,7 @@ const Payment = () => {
             className="w-full rounded-lg p-2 mb-4"
             placeholder="Enter payment details"
             value={payInfo}
-            onChange={handlePaymentDetailsChange}
+            onChange={handlePayInfoChange}
           ></textarea>
 
           <h2 className="text-xl font-semibold mb-4">Shipping Information</h2>

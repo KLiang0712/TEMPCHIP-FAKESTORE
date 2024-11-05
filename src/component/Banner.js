@@ -41,7 +41,7 @@ const Banner = () =>
       const data = await response.json();
       const uniqueCategories = [...new Set(data.map(item => item.category))];
       setCategories(['All', ...uniqueCategories]);
-      // setCategories(['All', 'electronics', 'jewelery', "men's clothing", "women's clothing", ...uniqueCategories]);
+      // Source: https://github.com/idrisibrahimerten/react-tailwind-ecommerce-website-project/blob/master/src/components/Header.js
     } catch (error) {
       console.error('Failed to fetch categories:', error);
     }
@@ -58,10 +58,9 @@ const Banner = () =>
       if (selectedCategory !== 'All') {
         apiUrl += `?category=${selectedCategory}`;
       }
-      
+    
       const response = await fetch(apiUrl);
       const data = await response.json();
-      
       setProducts(data);
     } catch (error) {
       console.error('Failed to fetch products:', error);
@@ -69,7 +68,7 @@ const Banner = () =>
   };
 
   return (
-    <header className={`${isActive ? 'bg-cyan-500 py-4 shadow-md' : 'bg-none py-6'
+    <header className={`${isActive ? 'bg-cyan-500 py-4 shadow-md' : 'bg-cyan-500 py-6'
     } fixed w-full z-10 transition-all`}>  
       
       <div className="container mx-auto flex items-center 
@@ -101,7 +100,7 @@ const Banner = () =>
               <BsBag className='text-2xl' /> 
               
             <div className="bg-green-600 absolute -right-2
-              -bottom-2 text-[12px] w-[18px] h-[18px] text-black
+              -bottom-2 text-[12px] w-[18px] h-[18px] text-white
               rounded-full flex justify-center items-center">
                 {itemAmount}
             </div>

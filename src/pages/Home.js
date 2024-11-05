@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import axios from "axios"; 
 // import { ItemContext } from "../docs/ItemDoc";
 
 /* components */
@@ -15,6 +16,18 @@ const Home = () => {
   // const {products, selectedCategory, setSelectedCategory} = useContext(ItemContext); 
   // const [categories, setCategories] = useState([]);
 
+  const fetchProducts = async () => {
+    const response = await axios.get('https://fakestoreapi.com/products');
+    setProducts(response.products);
+    console.log(products);
+  }
+
+   /* fetch/retrieve */
+   useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  /*
   useEffect(() => {
   fetch('https://fakestoreapi.com/products')
     .then((response) => response.json())
@@ -23,8 +36,9 @@ const Home = () => {
       setFilteredItems(data);
       });
   }, []); 
+  */
 
-   /*  
+  /*  
     fetchCategories();  
   }, []); 
 
