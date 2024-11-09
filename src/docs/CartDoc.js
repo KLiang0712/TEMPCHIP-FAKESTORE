@@ -2,14 +2,10 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
+/* states for cart, item amount, & total price */
 const CartProvider = ({ children }) => {
-  // cart state
   const [cart, setCart] = useState([]);
-  
-  // item amount state
   const [itemAmount, setItemAmount] = useState(0);
-  
-  // total price state
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -18,17 +14,16 @@ const CartProvider = ({ children }) => {
     }, 0);
     setTotal(total);
   });
-  console.log(cart); 
+  // console.log(cart); 
 
   /*update item amount */ 
-  useEffect(() => {
-    if (cart) {
-      const amount = cart.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.amount;
-      }, 0);
+  useEffect(() => 
+  { if (cart) 
+  { const amount = cart.reduce((accumulator, currentItem) => 
+    { return accumulator + currentItem.amount; }, 0);
       setItemAmount(amount);
-    }
-  }, [cart]);
+  }}, [cart]);
+  
 
   /* add to cart */
   const addItem = (product, id) => {
@@ -54,15 +49,12 @@ const CartProvider = ({ children }) => {
     });
       setCart(newCart);
     } 
-    else 
-    {
-      setCart([...cart, newItem]);
-    }
+    else { setCart([...cart, newItem]); }
   };
 
   /* remove from cart */ 
   const removeItem = (id) => {
-    const newCart = cart?.filter((item) => {
+    const newCart = cart.filter((item) => {
       return item.id !== id;
     });
     setCart(newCart);
@@ -82,11 +74,9 @@ const CartProvider = ({ children }) => {
   /* decrease amount */
   const decreaseAmount = (id) => 
   {
-    const cartItem = cart.find(item => {
-      return item.id === id;  
-  });
+    const cartItem = cart.find(item => item.id === id);
   if (cartItem) {
-      const newCart = cart?.map((item) => {
+      const newCart = cart.map((item) => {
         if (item.id === id) {
           return { ...item, amount: cartItem.amount - 1 };
         } else {
@@ -114,7 +104,7 @@ const CartProvider = ({ children }) => {
     >
       {children}
     </CartContext.Provider>
-  );
-};
+  )
+}
 
 export default CartProvider;

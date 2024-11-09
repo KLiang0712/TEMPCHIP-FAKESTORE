@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 /* import CHIP pages */
-import Checkout from "./pages/Checkout";
+// import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
 import ItemInfo from "./pages/ItemInfo";
-import Payment from "./pages/Payment";
+// import Payment from "./pages/Payment";
 
 /* import components */
 import Navpane from "./component/Navpane";
@@ -17,10 +17,10 @@ const App = () => {
     <Router>
       <Banner />
           <Routes>
-            <Route path="EMART" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ItemInfo />} />
-            <Route path='/checkout' element={<Checkout />} />
-            <Route path='/payment' element={<Payment />} />
+            {/* <Route path='/checkout' element={<Checkout />} /> */}
+            {/* <Route path='/payment' element={<Payment />} /> */}
           </Routes>
         <Navpane />
       <Footer />

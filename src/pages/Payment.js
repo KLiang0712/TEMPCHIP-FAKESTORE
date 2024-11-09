@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
   const navigate = useNavigate();
-
   const [address, setAddress] = useState('');
   const [payMethod, setPayMethod] = useState('');
   const [payInfo, SetPayInfo] = useState('');

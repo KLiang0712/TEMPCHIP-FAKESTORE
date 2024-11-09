@@ -6,7 +6,6 @@ import { CartContext } from '../docs/CartDoc';
 
 const Checkout = () => {
   const { cart, total } = useContext(CartContext);
-
   const formattedTotal = parseFloat(total).toFixed(2);
 
   return (

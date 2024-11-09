@@ -14,40 +14,42 @@ const Navpane = () => {
   const { cart, clearCart, total, itemAmount } = (useContext(CartContext));
   
   /* navigate checkout function */
+  /*
   const navigate = useNavigate();
-
   const handleCheckout = () => {
     navigate('/checkout');
   };
-
+  */
+ 
   return (
     <div
-      className={`${ isOpen ? 'right-0' : '-right-full'
-      } w-full bg-black fixed top-0 h-full shadow-2xl 
-        md:w-[35vw] xl:max-w-[30vw] transition-all 
-        duration-300 z-20 px-4 lg:px-[35px]`}>
+    className={`${
+      isOpen ? "right-0" : "-right-full"
+    } "w-full bg-white text-black fixed top-0 h-full shadow-2xl md:w-[35vw] lg:w-[40vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]"`}
+  >
 
       <div className="flex items-center justify-between py-6 border-b">
-        <div className="uppercase text-sm font-semibold">
+        <div className="uppercase text-sm text-black font-bold">
           Shopping Bag ({itemAmount})
         </div>
+        
         {/* icon */}
         <div
           onClick={handleClose}
-          className="cursor-poniter w-8 h-8 flex justify-center items-center"
+          className="cursor-pointer w-8 h-8 flex justify-center items-center"
         >
           <IoMdArrowForward className="text-2xl" />
         </div>
       </div>
 
-      <div className="flex flex-col gap-y-2 h-[520px]
-      lg:h-[640px] overflow-y-auto overflow-x-hidden border-b">
-        {cart?.map((item) => {
+      <div className="flex flex-col gap-y-2 h-[520px] md:h-[640px]
+      lg:h-[580px] overflow-y-auto overflow-x-hidden border-b">
+        {cart.map((item) => {
           return <ItemList item={item} key={item.id}/>;
         })}
       </div>
 
-      <div className="flex flex-col gap-y-3 py-4 mt-4">
+      <div className="flex flex-col gap-y-3 mt-4">
         <div className="flex w-full justify-between items-center">
           {/* total */}
           <div className="uppercase font-semibold">
@@ -63,22 +65,27 @@ const Navpane = () => {
             <IoIosTrash />
           </div>
         </div>
+        
         <Link
-          to={"/"}
+          to={"/cart"}
           className="bg-gray-200 flex p-3 justify-center items-center text-primary w-full font-medium"
         >
           View Cart
         </Link>
+        
+        
         <Link
           to={"/"}
           className="bg-primary flex p-3 justify-center items-center text-white w-full font-medium"
         >
           Checkout
         </Link>
+       
 
-        <button onClick={handleCheckout} className='bg-primary flex p-4 justify-center items-center text-white w-full font-medium'>
+        {/*<button onClick={handleCheckout} className='bg-primary flex p-4 justify-center items-center text-white w-full font-medium'>
           Checkout
-        </button>
+        </button> */}
+
       </div>
     </div>
   );

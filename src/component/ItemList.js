@@ -1,16 +1,15 @@
+/* Source: https://github.com/idrisibrahimerten/react-tailwind-ecommerce-website-project/blob/master/src/components/CartItem.js */
+
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import { CartContext } from '../docs/CartDoc';
 
-const ItemList = ({product}) => {
+const ItemList = ({item}) => {
   const {removeItem, increaseAmount, decreaseAmount } = useContext(CartContext);
 
   /* destructure items */
-  const {id, title, image, price, amount} = product;
-  
-  // const discountedPrice = (price - (price * 0 / 100)).toFixed(2);
-  const imageURL = image && image.length > 0 ? image[0] : '';
+  const {id, title, image, price, amount} = item;
 
   return (
     <div className='flex gap-x-4 py-2 lg:px-6 border-b
@@ -19,7 +18,7 @@ const ItemList = ({product}) => {
         gap-x-4'>
         {/* image */}
         <Link to={`/product/${id}`}>
-          <img className='max-w-[80px]' src={imageURL} alt='' />
+          <img className='max-w-[80px]' src={image} alt='' />
         </Link>
           
         <div className='w-full flex flex-col'>

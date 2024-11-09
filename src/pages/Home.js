@@ -1,102 +1,78 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios"; 
-// import { ItemContext } from "../docs/ItemDoc";
+import React, { useContext } from "react";
+import { ItemContext } from "../docs/ItemDoc";
+// import axios from "axios"; 
 
 /* components */
 import Product from "../component/Products";
 import Catalog from "../component/Catalog";
-// import ItemInfo from "./ItemInfo";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const { products } = useContext(ItemContext);
+  console.log(products);
   
- 
-  // const {products, selectedCategory, setSelectedCategory} = useContext(ItemContext); 
-  // const [categories, setCategories] = useState([]);
-
+  // const [products, setProducts] = useState([]);
+  // const [filteredItems, setFilteredItems] = useState([]);
+  // const [selectedCategory, setSelectedCategory] = useState('');
+  
+  /* fetch/retrieve */
+  /*
   const fetchProducts = async () => {
     const response = await axios.get('https://fakestoreapi.com/products');
     setProducts(response.products);
     console.log(products);
   }
-
-   /* fetch/retrieve */
+  
    useEffect(() => {
     fetchProducts();
   }, []);
-
-  /*
-  useEffect(() => {
-  fetch('https://fakestoreapi.com/products')
-    .then((response) => response.json())
-    .then((data) => {
-      setProducts(data);
-      setFilteredItems(data);
-      });
-  }, []); 
   */
 
-  /*  
-    fetchCategories();  
-  }, []); 
-
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch('https://fakestoreapi.com/products/categories');
-      const data = await response.json();
-      const uniqueCategories = [...new Set(data.map(item => item.category))];
-      setCategories(['', ...uniqueCategories]);
-    } catch (error) {
-      console.error('Error 404:', error);
-    }
-  };
-  */
-  
-  /* products filter */ 
+  /* products filter */
+  /* 
   const handleCategoryChange = (category) => {
-    // setSelectedCategory(event.target.value);
     setSelectedCategory(category);
 
     if (selectedCategory === 'All') {
       setFilteredItems(products); 
     } else {
-      const filteredItems = products.filter((product) =>
-        product.category.toLowerCase().includes(category.toLowerCase())
+      const filteredItems = products.filter((item) =>
+        item.category.toLowerCase().includes(category.toLowerCase())
       ); 
       setFilteredItems(filteredItems);
     }
   };
-  
-  /*
-  const filteredItems = products.filter(item => {
-
-    if (selectedCategory === 'All') {
-      return true;
-      }
-
-    return item.category === selectedCategory;
+  */
+ 
+  const filteredItems = products.filter((item) => {
+    return ( item.category === "men's clothing" || item.category === "women's clothing" 
+      || item.category === "electronics" || item.category === "jewelery" );
   });
-  */ 
-
+ 
   return ( 
   <div>
     <Catalog />
       <section className='py-16'>
         <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2
+            {/*<div className="grid grid-cols-1 md:grid-cols-2
                 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] max-w-sm
                 mx-auto md:max-w-none md:mx-0">
-                  {filteredItems.map((product) => {
+                  {filteredItems.map((item) => {
                     return (
-                      <Product product={product} key={product.id} 
+                      <Product product={item} key={item.id} 
                         selectedCategory={selectedCategory}
                         onCategoryChange={handleCategoryChange}
                       />
                     );
                   })}
-            </div>
+            </div>*/}
+          <h1 className="text-3xl font-semibold mb-10 text-center">Explore Our Products</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:mx-8 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
+            {filteredItems.map((product) => {
+              return (
+                <Product product={product} key={product.id}/>
+              );
+            })}
+          </div>
         </div>
       </section>
     </div>

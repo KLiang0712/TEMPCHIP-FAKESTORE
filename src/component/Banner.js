@@ -10,27 +10,26 @@ import {BsBag} from 'react-icons/bs';
 import Logo from '../images/logo2-2.svg'; 
 import { NavContext } from "../docs/NavDoc";
 import { CartContext } from "../docs/CartDoc";
-import {ItemContext } from "../docs/ItemDoc";
 
-const Banner = () => 
-{
+const Banner = () => {
   /* header state */
   const [isActive, setIsActive] = useState(false); 
   const {isOpen, setIsOpen} = useContext(NavContext);
   const { itemAmount } = useContext(CartContext); 
 
   /* Products & Categories */
-  const { setSelectedCategory, setProducts } = useContext(ItemContext);
-  const [categories, setCategories] = useState([]);
+  // const { setSelectedCategory, setProducts } = useContext(ItemContext);
+  // const [categories, setCategories] = useState([]);
 
   /* Event Listener */
   useEffect(() => { 
     window.addEventListener('scroll', () => {
         window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
       }); 
-  }, []);
+  });
 
   /* Fetch categories */
+  /*
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -50,9 +49,10 @@ const Banner = () =>
   const handleCategoryChange = async (event) => {
     const selectedCategory = event.target.value;
     setSelectedCategory(selectedCategory);
-  
+  */
 
-    /* Fetch products based on selected category */
+  /* Fetch products based on selected category */
+  /*  
     try {
       let apiUrl = 'https://fakestoreapi.com/products';
       if (selectedCategory !== 'All') {
@@ -66,20 +66,21 @@ const Banner = () =>
       console.error('Failed to fetch products:', error);
     }
   };
+  */
 
   return (
-    <header className={`${isActive ? 'bg-cyan-500 py-4 shadow-md' : 'bg-cyan-500 py-6'
-    } fixed w-full z-10 transition-all`}>  
+    <header className={`${isActive ? 'bg-black py-4 shadow-md' : 'bg-black py-6'
+    } fixed w-full z-10 lg:px-8 transition-all`}>  
       
-      <div className="container mx-auto flex items-center 
-        justify-between h-full"> 
-          <Link to={'/'}>
-              <div>
-                <img className="w-[40px]" src={Logo} alt='' />
-              </div>
-          </Link>
-
+      <div className="container mx-auto flex items-center justify-between h-full"> 
+        <Link to={"/"}>
+          <div className="w-[40px]">
+            <img src={Logo} alt='' />
+          </div>
+        </Link>
+         
         {/* Category Filter */}
+        {/*
         <select
           id='category'
           className='border bg-black border-black px-2 py-1 rounded'
@@ -90,7 +91,7 @@ const Banner = () =>
               {category}
             </option>
           ))}
-        </select>
+        </select> */}
 
           {/* cart */}
           <div 
