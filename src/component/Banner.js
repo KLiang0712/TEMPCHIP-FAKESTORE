@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {BsBag} from 'react-icons/bs';
 
-/* import docs */
+/* import docs & Logo img */
 import Logo from '../images/logo2-2.svg'; 
 import { NavContext } from "../docs/NavDoc";
 import { CartContext } from "../docs/CartDoc";
@@ -69,8 +69,8 @@ const Banner = () => {
   */
 
   return (
-    <header className={`${isActive ? 'bg-black py-4 shadow-md' : 'bg-black py-6'
-    } fixed w-full z-10 lg:px-8 transition-all`}>  
+    <header className={`${isActive ? 'bg-black py-4 shadow-md' : 'bg-black py-6'} 
+    fixed w-full z-10 lg:px-8 transition-all`}>  
       
       <div className="container mx-auto flex items-center justify-between h-full"> 
         <Link to={"/"}>
@@ -98,7 +98,7 @@ const Banner = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="cursor-pointer flex relative"
             >
-              <BsBag className='text-2xl' /> 
+              <BsBag className='text-2xl bg-cyan-500' /> 
               
             <div className="bg-green-600 absolute -right-2
               -bottom-2 text-[12px] w-[18px] h-[18px] text-white
