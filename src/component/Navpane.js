@@ -42,8 +42,7 @@ const Navpane = () => {
         <div className="flex w-full justify-between items-center">
             {/* total */}
             <div className="font-semibold">
-              <span className="mr-2">Subtotal:</span> ${" "}
-              {parseFloat(total).toFixed(2)}
+              <span className="mr-2">Subtotal:</span> ${" "}{parseFloat(total).toFixed(2)}
             </div>
             
             {/* clear cart icon */}
@@ -53,20 +52,19 @@ const Navpane = () => {
                 <IoIosTrash />
             </div>
         </div>        
+          
+          <Link to={"/"}
+            className="border border-[#16bbce] bg-teal-200 flex p-3 justify-center items-center text-black w-full font-bold"
+            >View Cart
+          </Link>
 
-        <Link to={"/"}
-          className="border border-[#16bbce] bg-teal-200 flex p-3 justify-center items-center text-black w-full font-bold"
-        >
-          View Cart
-        </Link>
-
-        <Link to={"/"}
-          className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
-        >
-          Checkout
-        </Link>   
+          <Link to={"/"}
+              className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
+          >Checkout
+          </Link>  
+      
       </div>
-    </div>
+  </div>
   );
 };
 

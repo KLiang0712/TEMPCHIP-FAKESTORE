@@ -36,8 +36,7 @@ const ItemList = ({item}) => {
               </div>
             </div>
 
-            <div className='bg-cyan-200 flex gap-x-2 h-[36px]
-            text-sm'>
+            <div className='bg-cyan-200 flex gap-x-2 h-[36px] text-sm'>
                 {/* quantity */}
                 
                 <div className='border border-black flex flex-1 max-w-[100px]
