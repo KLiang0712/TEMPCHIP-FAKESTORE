@@ -38,12 +38,12 @@ const Navpane = () => {
           {cart.map((item) => {return <ItemList item={item} key={item.id} />; })}
       </div>
 
-      <div className="flex flex-col gap-y-3 mt-4">
-        <div className="flex w-full justify-between items-center">
-            {/* total */}
-            <div className="font-semibold">
-              <span className="mr-2">Subtotal:</span> ${" "}{parseFloat(total).toFixed(2)}
-            </div>
+      {/* Source:  */}
+      <div className='flex flex-col gap-y-3 py-4 mt-4'>
+        <div className='flex w-full justify-between items-center'>
+          <div className='uppercase font-semibold text-black'>
+            <span className='mr-2'>Total:</span> ${parseFloat(total).toFixed(2)}
+          </div>
             
             {/* clear cart icon */}
             <div onClick={clearCart} 
@@ -54,12 +54,12 @@ const Navpane = () => {
         </div>        
           
           <Link to={"/"}
-            className="border border-[#16bbce] bg-teal-200 flex p-3 justify-center items-center text-black w-full font-bold"
+            className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
             >View Cart
           </Link>
 
           <Link to={"/"}
-              className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
+              className="border border-[#006400] bg-green-800 flex p-3 justify-center items-center text-white w-full font-bold"
           >Checkout
           </Link>  
       
