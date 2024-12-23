@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
-import { CartContext } from '../docs/CartDoc';
+import { CartContext } from '../context/CartDoc';
 
 const ItemList = ({item}) => {
   const {removeItem, increaseAmount, decreaseAmount } = useContext(CartContext);

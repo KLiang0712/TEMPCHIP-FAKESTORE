@@ -15,7 +15,7 @@
     "react-dom": "^18.2.0",
     "react-loading-skeleton": "^3.5.0",
     "react-mapfilter": "^3.2.5",
-    "react-redux": "^9.1.2",
+    "react-redux": "^9.2.0",
     "react-scripts": "^5.0.1",
     "redux": "^5.0.1",
     "redux-devtools-extension": "^2.13.9",
@@ -51,7 +51,7 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "react-icons": "^4.6.0",
-    "react-router-dom": "^6.27.0",
+    "react-router-dom": "^6.28.1",
     "tailwindcss": "^3.2.4"
   }
 }

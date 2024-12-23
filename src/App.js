@@ -8,9 +8,9 @@ import ItemInfo from "./pages/ItemInfo";
 // import Payment from "./pages/Payment";
 
 /* import components */
-import Navpane from "./component/Navpane";
-import Banner from "./component/Banner";
-import Footer from "./component/Footer";
+import Navpane from "./function/Navpane";
+import Banner from "./function/Banner";
+import Footer from "./function/Footer";
 
 const App = () => {
   return (<div className='overflow-hidden'>

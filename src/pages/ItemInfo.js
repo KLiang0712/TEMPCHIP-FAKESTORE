@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../docs/CartDoc";
-import { ItemContext } from "../docs/ItemDoc";
-// import axios from "axios"; 
+import { CartContext } from "../context/CartDoc";
+import { ItemContext } from "../context/ItemDoc";
 
 const ItemInfo = () => { 
     /* fetch/retrieve */

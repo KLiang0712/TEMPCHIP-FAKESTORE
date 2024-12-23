@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from 'react-icons/bs';
-import { CartContext } from "../docs/CartDoc";
+import { CartContext } from "../context/CartDoc";
 
 const Product = ({product}) => {
   const {addItem} = useContext(CartContext); 
@@ -14,11 +14,8 @@ const Product = ({product}) => {
           <div className="w-full h-full flex justify-center items-center bg-cyan-100">
               {/* image */}
               <div className="w-[200px] mx-auto flex justify-center items-center">
-                <img
-                  className="max-h-[160px] group-hover:scale-110 transition duration-300"
-                  src={image}
-                  alt=""
-                />
+                <img className="max-h-[160px] group-hover:scale-110 transition duration-300"
+                  src={image} alt="" />
               </div>
           </div>
 

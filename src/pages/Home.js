@@ -1,44 +1,23 @@
 import React, { useContext } from "react";
-import { ItemContext } from "../docs/ItemDoc";
-// import axios from "axios"; 
+import { ItemContext } from "../context/ItemDoc";
 
 /* components */
-import Product from "../component/Products";
-import Catalog from "../component/Catalog";
+import Product from "../function/Products";
+import Catalog from "../function/Catalog";
 
 const Home = () => {
   const { products } = useContext(ItemContext);
   console.log(products);
-  
-  /* fetch/retrieve */
-  /*
-  const fetchProducts = async () => {
-    const response = await axios.get('https://fakestoreapi.com/products');
-    setProducts(response.products);
-    console.log(products);
-  }
-  
-   useEffect(() => {
-    fetchProducts();
-  }, []);
-  */
 
-  /* products filter */
+  // ESCUELA-PLATZI 
   /* 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-
-    if (selectedCategory === 'All') {
-      setFilteredItems(products); 
-    } else {
-      const filteredItems = products.filter((item) =>
-        item.category.toLowerCase().includes(category.toLowerCase())
-      ); 
-      setFilteredItems(filteredItems);
-    }
-  };
+  const filteredItems = products.filter((item) => {
+  return ( item.category === "miscellaneous" || item.category === "clothes" 
+      || item.category === "electronics" || item.category === "furniture" || item.category === "shoes" );
+  });
   */
  
+  // FAKESTORE API 
   const filteredItems = products.filter((item) => {
     return ( item.category === "men's clothing" || item.category === "women's clothing" 
       || item.category === "electronics" || item.category === "jewelery" );

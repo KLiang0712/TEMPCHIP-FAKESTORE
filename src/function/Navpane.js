@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import { IoMdArrowForward } from 'react-icons/io';
 import { IoIosTrash } from 'react-icons/io';
 
-import ItemList from "../component/ItemList";
-import { NavContext } from "../docs/NavDoc";
-import { CartContext } from "../docs/CartDoc";
+import ItemList from "../function/ItemList";
+import { NavContext } from "../context/NavDoc";
+import { CartContext } from "../context/CartDoc";
 
-const Navpane = () => {
+const Navpane = () => 
+{
   const { isOpen, handleClose } = useContext(NavContext);
   const { cart, clearCart, total, itemAmount } = (useContext(CartContext));
   
@@ -53,15 +54,15 @@ const Navpane = () => {
             </div>
         </div>        
           
-          <Link to={"/"}
-            className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
-            >View Cart
-          </Link>
+        <Link to={"/cart"}
+          className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
+        >View Cart
+        </Link>
 
-          <Link to={"/"}
-              className="border border-[#006400] bg-green-800 flex p-3 justify-center items-center text-white w-full font-bold"
-          >Checkout
-          </Link>  
+        <Link to={"/"}
+          className="border border-[#006400] bg-green-800 flex p-3 justify-center items-center text-white w-full font-bold"
+        >Checkout
+        </Link>  
       
       </div>
   </div>
