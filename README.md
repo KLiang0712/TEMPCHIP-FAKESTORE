@@ -9,7 +9,7 @@ This is a sample CHIP template and FakeStore API React.JS project done using Tai
 It is a store API project done for my Software Development portfolio at TECH I.S. Bootcamp.<br>
 
 ## Getting Started with Create React App
-Please refer to the REFERENCE DOCUMENTATION of my REACTFILE Repository in the source link below. 
+Please refer to the REFERENCE DOCUMENTATION of my REACTFILE Repository READ.me in the source link below. 
 ### Source: https://github.com/KLiang0712/REACTFILE0712
 
 # Example Output
