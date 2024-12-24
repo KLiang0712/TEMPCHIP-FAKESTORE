@@ -14,7 +14,7 @@ const CartProvider = ({ children }) => {
     }, 0);
     setTotal(total);
   });
-  // console.log(cart); 
+  console.log(cart); 
 
   /*update item amount */ 
   useEffect(() => 
@@ -27,8 +27,8 @@ const CartProvider = ({ children }) => {
 
   /* add to cart */
   const addItem = (product, id) => {
-    //console.log(product); 
-    //console.log(`item ${product.title} added to cart`); 
+    console.log(product); 
+    console.log(`item ${product.title} added to cart`); 
     const newItem = { ...product, amount: 1 };
 
     /* check if the item is already in the cart */

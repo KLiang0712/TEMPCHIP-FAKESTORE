@@ -5,7 +5,6 @@ export const NavContext = createContext();
 const NavProvider = ({children}) => {
   /* scroll bar state  */
   const [isOpen, setIsOpen] = useState(false);
-
   const handleClose = () => { setIsOpen(false)};
 
   return ( 

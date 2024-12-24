@@ -9,8 +9,7 @@ import ItemList from "../function/ItemList";
 import { NavContext } from "../context/NavDoc";
 import { CartContext } from "../context/CartDoc";
 
-const Navpane = () => 
-{
+const Navpane = () => {
   const { isOpen, handleClose } = useContext(NavContext);
   const { cart, clearCart, total, itemAmount } = (useContext(CartContext));
   
@@ -40,7 +39,7 @@ const Navpane = () =>
       </div>
 
       {/* Source:  */}
-      <div className='flex flex-col gap-y-3 py-4 mt-4'>
+      <div className='flex flex-col gap-y-3 mt-4'>
         <div className='flex w-full justify-between items-center'>
           <div className='uppercase font-semibold text-black'>
             <span className='mr-2'>Total:</span> ${parseFloat(total).toFixed(2)}
@@ -48,21 +47,21 @@ const Navpane = () =>
             
             {/* clear cart icon */}
             <div onClick={clearCart} 
-              className="cursor-pointer py-4 bg-red-900 text-white w-12 h-12 flex justify-center items-center text-xl"
+              className="cursor-pointer py-4 bg-red-900 text-white flex justify-center items-center text-xl"
               >
                 <IoIosTrash />
             </div>
         </div>        
           
-        <Link to={"/cart"}
-          className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
-        >View Cart
-        </Link>
+          <Link to={"/"}
+            className="border border-[#006400] bg-green-200 flex p-3 justify-center items-center text-black w-full font-bold"
+            >View Cart
+          </Link>
 
-        <Link to={"/"}
-          className="border border-[#006400] bg-green-800 flex p-3 justify-center items-center text-white w-full font-bold"
-        >Checkout
-        </Link>  
+          <Link to={"/"}
+              className="border border-[#006400] bg-green-800 flex p-3 justify-center items-center text-white w-full font-bold"
+          >Checkout
+          </Link>  
       
       </div>
   </div>
