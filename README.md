@@ -7,6 +7,7 @@ TECH I.S. Web Development<br>
 A React.JS project developed with React JS and Tailwind CSS using the FakeStore API link.<br>  
 This is a sample CHIP template and FakeStore API React.JS project done using TailWind CSS.<br>
 It is a store API project done for my Software Development portfolio at TECH I.S. Bootcamp.<br>
+My goal for this project is to make it a future template to be used for developing features for checkout and payment. 
 
 ## Getting Started with Create React App
 Please refer to the REFERENCE DOCUMENTATION of my REACTFILE Repository READ.me in the source link below. 
